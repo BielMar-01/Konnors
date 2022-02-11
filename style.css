@@ -6,3 +6,6 @@ Author URI:
 Description: Tema criado para a Konnors
 Version: 1.0
 */
+* {
+  background: red;
+}
