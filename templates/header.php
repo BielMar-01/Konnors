@@ -17,48 +17,9 @@
 
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<!-- SEO feito -->
-		<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/favicon.ico">
-		<script>document.documentElement.classList.add("js");</script>
-
 		<!-- Inicio Wordpress Header -->
 		<?php wp_head(); ?>
-		<!-- Final Wordpress Header -->
-
-		<?php if ( is_front_page() ) {
-			$imagem_id = get_field('background_home');
-			$background_large = wp_get_attachment_image_src($imagem_id, 'large');
-			$background_medium = wp_get_attachment_image_src($imagem_id, 'medium');
-		?>
-		
-		<style type="text/css">
-		.introducao {
-			background: url('<?php echo $background_large[0] ?>') no-repeat center;
-			background-size: cover;
-		}
-		@media only screen and (max-width: 767px) {
-		.introducao {
-			background: url('<?php echo $background_medium[0] ?>') no-repeat center;
-			background-size: cover;
-		}
-		}
-		</style>
-		
-		<?php } else { ?>
-		<style type="text/css">
-		.introducao-interna {
-			background: #000 url("<?php the_field('background_interno'); ?>") no-repeat center;
-			background-size: cover;
-		}
-		</style>
-		<?php } ?>
-		<?php $contato = get_page_by_title('contato'); ?>
-		<style type="text/css">
-			.quebra {
-				background: url("<?php the_field('background_footer', $contato); ?>") no-repeat center;
-				background-size: cover;
-			}
-		</style>	
+		<!-- Final Wordpress Header -->	
 	</head>
 	<body>
 

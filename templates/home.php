@@ -12,9 +12,6 @@ get_header();
                   <p>Do design ao site no ar.</p>
                   <a href="#">NOSSOS TEMPLATES </a>
               </div>
-              <div class="banner__content__img">
-                  <img src="img/pexels-picjumbocom-210661 1.jpg" alt="">
-              </div>
           </div>
       </div>
   </section>
