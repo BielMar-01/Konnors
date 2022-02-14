@@ -17,9 +17,9 @@
     add_theme_support('menus'); 
 
     function nav_register(){
-        register_nav_menus(
-            'primary_menu' =>  'Primary Menu' 
-        ) ;
+        register_nav_menus( array(
+            'primary_menu' =>  'Primary Menu' ,
+        ) );
     }
     add_action('after_setup_theme', 'nav_register');
 
