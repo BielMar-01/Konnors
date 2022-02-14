@@ -1,44 +1,26 @@
-<header>
-    <div class="container">
-        <input type="checkbox" id="menuToggle" class="hiddenToggle">
-        <input type="checkbox" id="searchToggle" class="hiddenToggle">
-        <div class="top">
-            <a href="<?php echo get_home_url(); ?>" class="logo"></a>
-            <div class="quotes"></div>
-            <div class="right">
-                <div class="lang">
-                    <?php wpmziq_get_language_switcher(); ?>
-                </div>
-                <?php
-                    $defaults = array(
-                        'container' => false,
-                        'theme_location'  => 'top-menu',
-                        'menu_class'  => 'top-menu',
-                    );
-                    wp_nav_menu($defaults);
-                ?>
-                <label for="menuToggle" class="menuToggle"></label>
+<header class="header">
+        <div class="container">
+            <div class="header__top">
+                <h2 class="logo"><a href="index.html">Konnors</a></h2>
+                <nav>
+                    <ul class="header__top__nav">
+                        <li class="menu__item">
+                            <a href="#1" class="menu__item__link">Serviços</a>
+                        </li>
+                        <li class="menu__item">
+                            <a href="#2" class="menu__item__link">Quem Somos</a>
+                        </li>
+                        <li class="menu__item">
+                            <a href="#3" class="menu__item__link">Contatos</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="text__banner">
+                <p>Tiramos a sua ideia do papel</p>
+            </div>
+            <div class="arrow">
+                <img src="img/Arrow.png" alt="Arrow">
             </div>
         </div>
-        <div class="bottom">
-            <label for="menuToggle" class="close"></label>
-            <span class="title"><?php _e('Menu', LANG_DOMAIN); ?></span>
-            <form action="<?php echo get_home_url(); ?>/" class="searchField">
-                <fieldset>
-                    <input type="search" name="s" placeholder="<?php _e('Digite sua busca', LANG_DOMAIN); ?>">
-                    <input type="submit" value="">
-                </fieldset>
-            </form>
-            <nav class="menu">
-                <?php
-                    $defaults = array(
-                        'container' => false,
-                        'theme_location'  => 'primary-menu',
-                        'menu_class'  => 'primary-menu',
-                    );
-                    wp_nav_menu($defaults);
-                ?>
-            </nav>
-        </div>
-    </div>
-</header>
+    </header>
