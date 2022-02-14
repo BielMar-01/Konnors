@@ -1,0 +1,118 @@
+.wpContent--news {
+    width: 100%;
+    padding: 48px 0;
+
+    .container {
+        text-align: center;
+
+        > .content {
+            display: block;
+            margin: 0 0 40px 0;
+
+            h2 {
+                display: block;
+                margin: 0 0 32px 0;
+
+                text-align: left;
+            }
+
+            text-align: left;
+        }
+
+        .news {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+
+            width: 100%;
+            margin: 16px 0 0 0;
+
+            text-align: left;
+
+            @media (min-width: $screen-xl) {
+                max-height: 855px;
+            }
+
+            .item {
+                position: relative;
+                display: block;
+
+                width: 100%;
+                margin: 0 0 30px;
+                
+                border-radius: 0 0 32px 0;
+                background-color: $primaryColor;
+
+                &:nth-child(2) ~ .item {
+                    display: none;
+                }
+                
+                @media (min-width: $screen-xl) {
+                    max-width: 264px;
+                    margin: 0 12px 30px;
+
+                    &:nth-child(2) ~ .item {
+                        display: block;
+                    }
+                }
+
+                .thumbnail {
+                    display: block;
+                    width: 100%;
+                    height: 146px;
+
+                    margin: 0 0 16px 0;
+
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                }
+
+                .content {
+                    padding: 16px 24px;
+
+                    .title {
+                        display: block;
+                        margin: 0 0 8px 0;
+
+                        color: #FFF;
+                        font-family: $fontBase;
+                        font-size: 16px;
+                        font-weight: 700;
+                        line-height: 115%;
+                    }
+
+                    .excerpt {
+                        display: block;
+
+                        color: #FFF;
+                        font-family: $textFont;
+                        font-size: 16px;
+                        font-weight: 400;
+                        line-height: 19px;
+                    }
+
+                    .link {
+                        display: flex;
+                        align-items: center;
+
+                        margin: 16px 0 0;
+
+                        color: $secondaryColor;
+                        font-family: $textFont;
+                        font-size: 16px;
+                        font-weight: 700;
+
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+        }
+
+        .seeMore {
+            margin: 32px 0 0 0;
+        }
+    }
+}

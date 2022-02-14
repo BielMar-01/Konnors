@@ -1,12 +1,44 @@
-// Framework
-@import "framework/bootstrap.scss";
+/*
+    Theme Name: MZiQ - CBA Redesign
+    Author: MZ Group
+    Author URI: https://www.mzgroup.com/
+    Description: MZiQ CMS Theme for CBA Redesign website.
+    Version: 1.0
+    License: GNU General Public License v2 or later
 
-// Base
-@import "base/reset";
+    One and only theme for IR Website for CBA Redesign
+*/
 @import "base/variables";
+@import "base/mixins";
+@import "base/flexbox";
+@import "base/reboot";
+@import "base/wpCore";
 
-// Global
-//@import "global/general";
+@import "global/container";
+@import "global/grid";
+@import "global/table";
+@import "global/search";
+@import "global/buttons";
+@import "global/forms";
+@import "global/header";
+@import "global/footer";
 
-// Sections
-@import "sections/header";
+@import "pages/home";
+@import "pages/internal";
+@import "pages/contact";
+@import "pages/directors";
+@import "pages/tearsheet";
+@import "pages/files";
+@import "pages/stockinfo";
+@import "pages/productiveProcesses";
+@import "pages/energy";
+@import "pages/esgStrategy";
+@import "pages/news";
+
+@import "plugins/accordion";
+@import "plugins/datepicker";
+@import "plugins/loading";
+@import "plugins/popup";
+@import "plugins/slick.scss";
+@import "plugins/slick-theme.scss";
+@import "plugins/mzCookieBar";

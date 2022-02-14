@@ -1,0 +1,203 @@
+.wpContent--stockinfo {
+    .container {
+        .graph {
+            width: 100%;
+    
+            ~ .graph {
+                margin-top: 40px;
+            }
+
+            .chart .tbPrices .tbPrices__title,
+            .historyTickerIdentification {
+                background-color: $primaryColor !important;
+            }
+
+            .btn-change-chart-period.active,
+            .btn-change-chart-type.active,
+            .btn-default,
+            .btn-export {
+                @include button(true);
+            }
+    
+            .chart {
+                .tbPrices {
+                    .tbPrices {
+                        &__title {
+                            display: block;
+                            padding: 17px 18px;
+                            margin: 0 0 6px 0;
+            
+                            color: #FFF;
+                            font-family: $fontBase;
+                            font-size: 16px;
+                            font-weight: 400;
+
+                            .dateReference {
+                                color: #FFF;
+                                font-family: $fontBase;
+                                font-size: 16px;
+                                font-weight: 400;
+                            }
+                        }
+    
+                        &__price, &__column {
+                            span {
+                                font-family: $fontBase;
+                                font-weight: 400;
+                            }
+                        }
+
+                        &__price {
+                            span {
+                                font-size: 23px;
+                                font-weight: 300;
+                            }
+                        }
+
+                        &__column {
+                            > .tbPrices__column-box {
+                                font-size: 15px;
+
+                                &:last-child {
+                                    background-color: $quaternaryColor;
+                                }
+                            }
+                        }
+                    }
+                }
+    
+                .btns {
+                    input {
+                        display: inline-flex;
+                        @include align-items(center);
+                        
+                        padding: 8px 24px;
+    
+                        @include button(false, true);
+                        margin-bottom: 15px;
+
+                        + input {
+                            margin-left: 8px;
+                        }
+                    }
+                }
+            }
+    
+            .historyTabularPrices {
+                * {
+                    font-family: $fontBase;
+                }
+                .historyTickerIdentification {
+                    display: none;
+                    padding: 10px 18px;
+                    margin: 0 0 6px 0;
+    
+                    color: #FFF;
+                    font-family: $fontBase;
+                    font-size: 16px;
+                    font-weight: 400;
+                    line-height: 19px;
+    
+                    border: none;
+                    background-color: $secondaryColor;
+                }
+    
+                > #historyForm {
+                    margin: 0 7px;
+    
+                    .form-inline {
+                        width: 100%;
+                        margin: 0 0 44px 0;
+    
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-between;
+    
+                        float: none;
+    
+                        @media (min-width: $screen-xl) {
+                            
+                        }
+    
+                        > div:not(.last) {
+                            position: relative;
+                            display: flex;
+                            align-items: center;
+    
+                            width: auto;
+    
+                            float: none;
+                            margin: 0;
+        
+                            label {
+                                margin: 0 12px 0 0;
+                                display: block;
+                                float: none;
+                                
+                                color: $textColor;
+                                font-family: $textFont;
+                                font-size: 16px;
+                                font-weight: 400;
+
+                                white-space: nowrap;
+                            }
+    
+                            input {
+                                @include input();
+                                max-width: 247px;
+                                
+                                -webkit-box-shadow: none;
+                                box-shadow: none;
+                            }
+    
+                            &::after {
+                                content: '';
+                                position: absolute;
+                                top: 0;
+                                right: 0;
+    
+                                width: 56px;
+                                height: 100%;
+    
+                                background-position: center;
+                                background-repeat: no-repeat;
+                                background-image: url("img/stockinfoCalendar.svg");
+                            }
+                        }
+    
+                        .last {
+                            display: flex;
+                            @include align-items(center);
+    
+                            .info {
+                                margin:  0 0 0 18px;
+    
+                                color: $textColor;
+                                font-size: 12px;
+                                font-weight: 400;
+                                line-height: 14px;
+                            }
+                        }
+    
+                        .btn {
+                            float: none;
+    
+                            &:not(.btn-close){
+                                @include button(false);
+                            }
+                        }
+                    }
+                }
+    
+                .table__history {
+                    margin: 0;
+                    @include table();
+                }
+            }
+
+            .table-footer {
+                display: none;
+            }
+        }
+    }
+}

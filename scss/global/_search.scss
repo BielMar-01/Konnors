@@ -1,0 +1,288 @@
+.searchPopup {
+    display: none;
+    position: fixed;
+    z-index: 60;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+
+    &__close {
+        cursor: pointer;
+        color: white;
+        @include font-size(30px);
+        position: absolute;
+        z-index: 99;
+        top: 5%;
+        right: 15%;
+    }
+
+    &__form {
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        form {
+            display: flex;
+
+            input {
+                background: transparent;
+                border: none;
+                border-bottom: 3px solid white;
+                @include font-size(28px);
+                outline: none;
+                color: white;
+                padding-left: ($gap - 7);
+
+                @include placeholder(white);
+
+                @media (max-width: 767px) {
+                    max-width: 350px;
+                }
+
+                @media (max-width: 375px) {
+                    max-width: 310px;
+                }
+
+                @media (max-width: 320px) {
+                    max-width: 250px;
+                }
+            }
+
+            button {
+                background: none;
+                border: none;
+                border-bottom: 3px solid white;
+                padding-right: ($gap - 7);
+
+                img {
+                    max-width: 32px;
+                }
+            }
+        }
+    }
+}
+
+//Search New Page
+.wpContent--search {
+    position: relative;
+    width: 100%;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @media (min-width: $screen-xl) {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+
+        padding: 0 0 64px 0;
+    }
+
+    .iqFiles {
+        width: 100%;
+        margin: 0 auto 48px;
+
+        @media (min-width: $screen-xl) {
+            max-width: 512px;
+            margin: 0 auto;
+        }
+
+        .searchFiles {
+            text-align: left;
+            
+            tbody {
+                tr {
+                    td {
+                        &.icon {
+                            width: 65px;
+                            padding-top: 0;
+                            padding-bottom: 0;
+            
+                            text-align: center;
+            
+                            a {
+                                display: inline-block;
+                            }
+                        }
+            
+                        &.title {
+                            .fileName {
+                                display: inline-block;
+                                margin: 0 0 6px 0;
+
+                                font-family: $textFont;
+                                font-size: 14px;
+                                font-weight: 700;
+                            }
+
+                            .date {
+                                font-family: $textFont;
+                                font-size: 13px;
+                                font-weight: 400;
+                            }
+                        }
+            
+                        &.copy {
+                            width: 40px;
+                            height: 40px;
+            
+                            button {
+                                position: relative;
+                                width: 40px;
+                                height: 100%;
+            
+                                cursor: pointer;
+            
+                                border: none;
+                                background: none;
+                                background-image: url("img/link.svg");
+                                background-position: center;
+                                background-size: 16px;
+                                background-repeat: no-repeat;
+            
+                                &:hover {
+                                    background-color: rgba($primaryColor, .25);
+                                }
+            
+                                @keyframes pop {
+                                    0% {
+                                        max-width: 0;
+                                        opacity: 0;
+                                    }
+            
+                                    25% {
+                                        max-width: 512px;
+                                        opacity: 1;
+                                    }
+            
+                                    75% {
+                                        max-width: 512px;
+                                        opacity: 1;
+                                    }
+            
+                                    100% {
+                                        max-width: 0;
+                                        opacity: 0;
+                                    }
+                                }
+            
+                                &.done {
+                                    span {
+                                        animation-name: pop;
+                                        animation-iteration-count: 1;
+                                        animation-duration: 3s;
+                                        animation-fill-mode: forwards;
+                                        animation-play-state: running;
+                                    }
+                                }
+            
+                                span {
+                                    position: absolute;
+                                    top: calc(50% - 12px);
+                                    right: 100%;
+            
+                                    display: block;
+                                    padding: 4px 4px;
+            
+                                    width: 96px;
+                                    max-width: 0;
+                                    opacity: 0;
+            
+                                    color: #FFF;
+                                    font-size: 12px;
+            
+                                    background-color: hsl(120, 60%, 70%);
+                                    
+                                    -webkit-transition: .144s ease;
+                                    transition: .144s ease;
+                                    overflow: hidden;
+                                    animation-play-state: paused;
+                                }
+                            }
+                        }
+            
+                        &.download {
+                            width: 48px;
+                            height: 60px;
+
+                            padding-top: 0;
+                            padding-bottom: 0;
+
+                            a {
+                                display: block;
+            
+                                width: 40px;
+                                height: 100%;
+            
+                                background: none;
+                                background-image: url("img/icon-download.svg");
+                                background-position: center;
+                                background-size: 18px;
+                                background-repeat: no-repeat;
+            
+                                &:hover {
+                                    background-color: rgba($primaryColor, 0.15);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .wpContents {
+        width: 100%;
+        margin: 0 auto 48px;
+
+        @media (min-width: $screen-xl) {
+            max-width: 512px;
+            margin: 0 auto;
+        }
+
+        .searchContent {
+            text-align: left;
+            
+            tbody {
+                tr {
+                    td {
+                        &:first-child {
+                            width: 50px;
+                            
+                            .circle {
+                                width: 8px;
+                                height: 8px;
+                                background: $primaryColor;
+                                border-radius: 50%;
+                                margin: auto;
+                            }
+                        }
+
+                        &, * {
+                            color: $textColor;
+                            font-family: $fontBase;
+                            font-size: 20px;
+                            font-weight: 400;
+                            line-height: 1px;
+
+                            text-decoration: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .btns {
+        display: flex;
+        justify-content: space-around;
+    }
+}

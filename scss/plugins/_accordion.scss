@@ -1,0 +1,259 @@
+.accordion {
+    margin: 20px 0;
+
+    &__item {
+        position: relative;
+        margin-bottom: 16px;
+
+        &.member {
+            .accordion__item__header {
+                > span {
+                    width: 50%;
+                }
+            }
+        }
+
+        &.files {
+            .toggle:checked {
+                ~ .accordion__item__content {
+                    padding: 0;
+                }
+            }
+
+            .accordion__item__header {
+                &.active {
+                    + .accordion__item__content {
+                        max-height: 2048px;
+                        padding: 0;
+    
+                        opacity: 1;
+                    }
+                }
+            }
+
+            .accordion__item__content {
+                padding: 0;
+                
+                border: none;
+                border-radius: 0;
+                background-color: rgba(#FFF, 0);
+            }
+        }
+
+        &.curriculum {
+            margin: 0 0 4px 0;
+            border: 1px solid #EBEBEB;
+            border-radius: 5px;
+
+            .accordion__item__header {
+                min-height: 40px;
+                padding-top: 2px;
+                padding-left: 40px;
+
+                border: none;
+                box-shadow: none;
+                background-color: transparent;
+
+                &::before { 
+                    content: none;
+                }
+
+                .toggle {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+
+                    width: 40px;
+                    height: 40px;
+
+                    transition-duration: .377s;
+
+                    .line {
+                        position: absolute;
+                        top: calc(50% - 1px);
+                        left: calc(50% - 4px);
+                        
+                        width: 8px;
+                        height: 1px;
+
+                        display: block;
+
+                        background-color: $primaryColor;
+                        transition-duration: .377s;
+
+                        &:last-child {
+                            transform: rotate(90deg);
+                        }
+                    }
+                    
+                }
+
+                span {
+                    font-family: $textFont;
+                    font-size: 16px;
+                    font-weight: 400;
+                }
+
+                &.active {
+                    .toggle {
+                        transform: rotate(-180deg);
+
+                        .line:last-child {
+                            transform: rotate(0);
+                        }
+                    }
+    
+                    + .accordion__item__content {
+                        max-height: 1024px;
+                        padding: 8px 16px 8px 16px;
+    
+                        opacity: 1;
+
+                        @media (min-width: $screen-xl) {
+                            padding: 8px 20px 8px 40px;
+                        }
+                    }
+                }
+            }
+
+            .accordion__item__content {
+                padding-left: 40px;
+
+                &, * {
+                    font-family: $textFont;
+                    font-size: 16px;
+                    font-weight: 400;
+                    line-height: 23px;
+                }
+            }
+        }
+
+        &.glossary {
+            .accordion__item__content {
+                padding: 0;
+            }
+        }
+
+        &.alt {
+            margin: 0;
+
+            .accordion__item__header {
+                padding-left: 40px;
+
+                border: none;
+                border-bottom: 1px solid $textColor;
+
+                &::before {
+                    right: auto;
+                    left: 0;
+
+                    background-size: auto;
+                    background-image: url("img/accordionCurriculum.svg");
+                }
+
+                &.active {
+                    color: $textColor;
+                    background-color: #FFF;
+    
+                    &::before {
+                        filter: none;
+                        @include transform(rotate(90deg));
+                    }
+    
+                    + .accordion__item__content {
+                        max-height: 1024px;
+                        padding: 13px 20px;
+    
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+
+        &__header {
+            position: relative;
+
+            display: flex;
+            align-items: center;
+
+            padding: 0 64px 0 14px;
+            min-height: 48px;
+
+            color: $titleColor;
+            font-family: $fontBase;
+            font-size: 16px;
+            font-weight: bold;
+            line-height: 19px;
+            
+            cursor: pointer;
+
+            border: none;
+            border-radius: 5px;
+            background-color: #FFF;
+
+            box-shadow: 0px 4px 4px rgba($primaryColor, 0.19);
+            
+            transition-duration: .377s;
+
+            &::before {
+                content: "";
+                width: 40px;
+                height: 100%;
+
+                position: absolute;
+                right: 0;
+                top: 0;
+
+                opacity: 1;
+
+                transition-duration: .61s;
+
+                background: url(img/arrow_accordion.svg);
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+
+            &.active {
+                &::before {
+                    @include transform(rotateX(180deg));
+                }
+
+                + .accordion__item__content {
+                    max-height: 1024px;
+                    padding: 13px 0;
+
+                    opacity: 1;
+
+                    &.noPadding {
+                        padding: 0;
+        
+                        > * {
+                            margin: 0;
+                        }
+                    }
+                }
+            }
+        }
+
+        &__content {
+            display: block;
+            margin-top: 0;
+            padding: 0;
+
+            max-height: 0;
+            overflow: auto;
+
+            opacity: 0;
+
+            border: none;
+            border-radius: 0;
+
+            transition-duration: .61s;
+            background-color: #FFF;
+
+            table {
+                margin-top: 0;
+            }
+        }
+    }
+}

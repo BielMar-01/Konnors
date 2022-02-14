@@ -1,29 +1,7 @@
-<?php get_header(); ?>
+<br><br>
 
-<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+<div class="container">
+	<h1 class="text-center">Crie uma página e configure-a com o modelo de página "Home page"!</h1>
+</div>
 
-<article>
-	<section class="introducao-interna introducao-geral">
-		<div class="container">
-			<h1><?php the_title(); ?></h1>
-		</div>
-	</section>
-
-	<section class="container conteudo-geral">
-		<div class="grid-8">
-			<?php the_content(); ?>
-		</div>
-	</section>
-</article>
-
-<?php endwhile; else: ?>
-
-	<section class="introducao-interna introducao-geral">
-		<div class="container">
-			<h1>Página não encontrada.</h1>
-		</div>
-	</section>
-
-<?php endif; ?>
-
-<!--<?php get_footer(); ?>-->
+<br><br>

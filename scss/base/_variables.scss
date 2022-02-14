@@ -1,20 +1,36 @@
-// Cores
-$bg-header: linear-gradient(63.18deg, #0b1e26 0%, #1b323c 100%);
+// COLORS
+$primaryColor: #1332e2;
+$secondaryColor: #00CDE2;
+$tertiaryColor: #3d008a;
+$quaternaryColor: #EAEAEA;
+$titleColor: $primaryColor;
+$textColor: #24242A;
 
-$text-header: #ffffff;
-$text-header-link: #ffc035;
+// FONTS
+$fontBase: 'Votorantim Sans', sans-serif;
+$textFont: $fontBase;
+$fontSize: 16px;
+$lineHeight: 130%;
 
-$text-banner: #ffffff;
+// FONTS - WEIGHT
+$fontLight: 300;
+$fontRegular: 400;
+$fontMedium: 500;
+$fontBold: 700;
 
-// Fontes
-$font-1: "Poppins", sans-serif;
+$high: #A5FF97;
+$low: #FD7979;
 
-// Espaçamento
-$top: 25px;
-$bottom: 25px;
-$gap: 25px;
+// SPACING
+$gap: 15px;
 
-$top-section: 290px;
-$top-section-two: 83px;
-$top-footer: 100px;
-$right-footer: 40px;
+//screen sizes
+$screen-xl: 1200px;
+$screen-lg: 992px;
+$screen-md: 768px;
+$screen-sm: 576px;
+
+//button sizes
+$btnlg: 200px;
+$btnmd: 165px;
+$btnsm: 105px;

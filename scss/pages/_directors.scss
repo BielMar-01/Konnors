@@ -1,0 +1,243 @@
+.wpContent--directors {
+    .group {
+        .members {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+
+            @media (min-width: $screen-md) {
+                align-items: flex-start;
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+
+            .member {
+                width: 100%;
+                max-width: 214px;
+
+                margin: 12px 7px;
+
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                cursor: pointer;
+                text-decoration: none;
+
+                border: none;
+
+                background-color: #FFF;
+                background-image: none;
+                
+                transition-duration: .377s;
+
+                &:hover {
+                    .memberPicture {
+                        filter: drop-shadow(0px 4px 20px rgba(19, 50, 226, 0.4));
+                    }
+                }
+
+                &:active {
+                    @include transform(scale(1.05));
+                }
+
+                .memberPicture {
+                    display: block;
+                    width: 100%;
+                    height: 240px;
+                    margin: 0 0 8px 0;
+
+                    border-radius: 32px;
+                    background-position: center;
+                    background-size: cover;
+                    background-repeat: no-repeat;
+
+                    filter: drop-shadow(0px 0 0 rgba(19, 50, 226, 0));
+
+                    transition-duration: 377ms;
+                }
+
+                .memberName {
+                    display: block;
+                    margin: 0 0 10px 0;
+
+                    color: $primaryColor;
+                    font-family: $fontBase;
+                    font-size: 19px;
+                    font-weight: 400;
+                    line-height: 22px;
+
+                    text-align: center;
+                }
+
+                .memberJob {
+                    display: block;
+
+                    color: $textColor;
+                    font-family: $textFont;
+                    font-weight: 400;
+                    font-size: 16px;
+                    line-height: 16px;
+
+                    text-align: center;
+                }
+            }
+        }
+    }
+
+    .membersPopup {
+        position: fixed;
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 100%;
+
+        opacity: 0;
+        pointer-events: none;
+
+        background-color: rgba(#000, .67);
+        z-index: 8;
+
+        backdrop-filter: blur(16px);
+        @include transition(.61s);
+
+        &.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        @media (min-width: $screen-lg) {
+            backdrop-filter: none;
+        }
+
+        .box {
+            position: absolute;
+            top: 64px;
+            left: 8px;
+
+            width: calc(100% - 16px);
+            max-width: 755px;
+            max-height: 81%;
+
+            padding: 40px 0 0 0;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            overflow: auto;
+
+            background-color: #FFF;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+
+            @media (min-width: $screen-lg) {
+                top: 50%;
+                left: 50%;
+
+                padding: 0 0 0 244px;
+
+                align-items: flex-start;
+                flex-direction: row;   
+
+                transform: translate(-50%, -50%);
+            }
+            
+            .close {
+                position: fixed;
+                bottom: 24px;
+                right: calc(50% - 24px);
+
+                display: block;
+                width: 48px;
+                height: 48px;
+
+                border-radius: 100%;
+                border: none;
+
+                background-color: rgba(#FFF, .75);
+                background-image: url("img/search/close.svg");
+                background-position: center;
+                background-repeat: no-repeat;
+
+                z-index: 1;
+
+                transition-duration: .144s;
+
+                &:hover {
+                    background-color: rgba(#FFF, .25);
+                }
+                &:active {
+                    transform: scale(.9);
+                }
+
+                @media (min-width: $screen-lg) {
+                    top: 18px;
+                    right: 18px;
+                    bottom: auto;
+
+                    background-color: rgba($primaryColor, .05);
+
+                    &:hover {
+                        background-color: rgba($primaryColor, .25);
+                    }
+                }
+            }
+
+            .memberPicture {
+                display: block;
+                width: 217px;
+                min-height: 218px;
+
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+
+                @media (min-width: $screen-xl) {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    
+                    width: 244px;
+                    height: 100%;
+                    min-height: 0;
+                }
+            }
+
+            .content {
+                padding: 32px;
+
+                .memberName {
+                    display: block;
+                    margin: 0 0 12px 0;
+
+                    color: $titleColor;
+                    font-family: $fontBase;
+                    font-size: 26px;
+                    font-weight: 400;
+                }
+
+                .memberJob {
+                    display: block;
+                    margin: 0 0 16px 0;
+
+                    color: $titleColor;
+                    font-family: $textFont;
+                    font-weight: 600;
+                    font-size: 17px;
+                    line-height: 20px;
+                }
+
+                .memberResume {
+                    display: block;
+
+                    color: $textColor;
+                    font-family: $textFont;
+                    font-size: 16px;
+                    font-weight: 400;
+                    line-height: 24px;
+                }
+            }
+        }
+    }
+}

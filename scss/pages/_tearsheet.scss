@@ -1,0 +1,513 @@
+$printScale: 1.67;
+
+@page {
+    size: calc(210mm * #{$printScale}) calc(297mm * #{$printScale});
+    margin: 2cm 0 0 0;
+}
+
+@page :first {
+    margin: 0 0 0 0;
+}
+
+html {
+    -webkit-print-color-adjust: exact;
+}
+.printOnly {
+    display: none;
+}
+
+@media print {
+    .printOnly {
+        display: block;
+    }
+
+    .wpContent {
+        margin: 0 0 32px 0;
+    }
+
+    .header {
+        position: absolute;
+        top: 0 !important;
+
+        height: 80px;
+
+        .top {
+            height: 100%;
+            padding: 0;
+
+            background: none;
+
+            .container {
+                justify-content: center;
+                *:not(.logo) {
+                    display: none;
+                }
+
+                .logo {
+                    position: relative;
+                    top: auto;
+                    left: auto;
+
+                    width: 128px;
+                    height: 65px;
+
+                    background-size: cover;
+                }
+            }
+        }
+
+        .container {
+            .navigation {
+                * {
+                    opacity: 0;
+                    pointer-events: none;
+                }
+            }
+        }
+    }
+
+    footer {
+        position: relative;
+        bottom: auto;
+
+        width: 100%;
+
+        background-color: rgba(#000, 0.5);
+        backdrop-filter: blur(20px);
+
+        .printOnly {
+            width: 100%;
+            padding: 12px 24px;
+
+            display: flex;
+            justify-content: space-between;
+            @include align-items(center);
+
+            .logo {
+                display: block;
+                width: 78px;
+                height: 49px;
+
+                background-image: url("img/logo-irani.svg");
+                background-position: center;
+                background-size: 110px;
+                background-repeat: no-repeat;
+
+                z-index: 3;
+
+                @media (min-width: $screen-lg) {
+                    top: 46px;
+                    left: 18px;
+                }
+            }
+
+            .poweredBy {
+                display: block;
+                color: #fff;
+            }
+        }
+
+        .top {
+            .container {
+                .left,
+                .right {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    // Footer
+    .sitemap,
+    .cookieinfo,
+    footer .top .sitemapButton,
+    footer .top .privacyTermsLink {
+        display: none !important;
+    }
+
+    .container {
+        max-width: calc(210mm * #{$printScale}) !important;
+    }
+}
+
+.tearsheet {
+    position: relative;
+    margin: 0 -15px;
+
+    section.tearsheetSection:not(.flexbox) {
+        margin-bottom: 40px;
+    }
+
+    .downloadButtons {
+        position: sticky;
+        top: 116px;
+
+        display: flex;
+        // justify-content: flex-end;
+        justify-content: center;
+        width: 100%;
+        // padding: 16px 0;
+        padding: 15px;
+
+        z-index: 2;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+
+            width: 99vw;
+            height: 100%;
+
+            background-color: rgba(#fff, 0.85);
+            backdrop-filter: blur(8px);
+
+            //box-shadow: 0 0 8px rgba(#000, .25);
+
+            @include transform(translateX(-50%));
+
+            @media (min-width: 992px) {
+                display: none;
+            }
+        }
+
+        @media (min-width: 992px) {
+            position: fixed;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            width: auto;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        button {
+            position: relative;
+            display: flex;
+            @include align-items(center);
+
+            // margin: 0 16px;
+            padding: 0;
+
+            cursor: pointer;
+
+            border: none;
+            background: none;
+            background-color: $primaryColor;
+
+            transition-duration: all 0.3s;
+
+            + button {
+                margin-left: 15px;
+
+                @media (min-width: 992px) {
+                    margin-left: 0;
+                    margin-top: 15px;
+                }
+            }
+
+            &:hover {
+                background-color: darken($primaryColor, 10%);
+            }
+
+            &:active {
+                background-color: rgba($primaryColor, 0.5);
+            }
+
+            &::before {
+                content: "";
+                display: inline-block;
+                width: 56px;
+                min-width: 56px;
+                height: 50px;
+
+                margin: 0 16px 0 0;
+
+                background-image: url("img/tearsheet/pdf-full.svg");
+                background-position: center right;
+                background-repeat: no-repeat;
+
+                @media (min-width: 1200px) {
+                    margin: 0;
+                }
+            }
+
+            &.tearedDownload {
+                &::before {
+                    background-image: url("img/tearsheet/pdf.svg");
+                }
+            }
+
+            @media (min-width: $screen-lg) {
+                &:hover {
+                    width: 220px;
+                    // padding: 0 12px;
+
+                    &::before {
+                        margin: 0 16px 0 0;
+                    }
+
+                    > .name {
+                        max-width: 100%;
+                        opacity: 1;
+                    }
+                }
+
+                > span {
+                    transition-duration: all 0.3s;
+
+                    &.name {
+                        display: inline-block;
+                        max-width: 0;
+
+                        overflow: hidden;
+                        opacity: 0;
+
+                        white-space: nowrap;
+                    }
+                }
+            }
+
+            .name {
+                color: #fff;
+            }
+
+            .amount {
+                position: absolute;
+                top: -8px;
+                right: -8px;
+
+                width: 24px;
+                height: 24px;
+
+                color: #fff;
+                font-size: 16px;
+                font-weight: 700;
+                line-height: 27px;
+
+                border-radius: 18px;
+                background-color: $primaryColor;
+
+                border: 1px solid #fff;
+                line-height: 1 !important;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+    }
+
+    #printPage {
+        display: none;
+    }
+
+    @media print {
+        .downloadButtons {
+            display: none;
+        }
+        .tearsheetSection {
+            .tearsheetSectionPrint {
+                display: none !important;
+            }
+        }
+
+        &.partial {
+            #printPage {
+                display: block;
+
+                > section {
+                    display: inline-block;
+                    vertical-align: top;
+                    margin: 24px;
+                }
+            }
+
+            #mainTearsheet {
+                display: none;
+            }
+        }
+    }
+
+    .tearsheetSection {
+        position: relative;
+        display: block;
+
+        // margin: 24px 0 0 0;
+        padding: 15px;
+
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        page-break-before: auto;
+        page-break-inside: avoid;
+
+        // @media (min-width: $screen-lg) {
+        // padding: 16px 32px;
+        // margin: 0;
+        // }
+
+        .tearsheetSectionPrint {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+
+            display: block;
+            width: 20px;
+            height: 20px;
+
+            color: #fff;
+            font-weight: 700;
+
+            cursor: pointer;
+
+            border: 1px solid $textColor;
+            border-radius: 0;
+
+            background-color: transparent;
+            background-repeat: no-repeat;
+            background-position: center;
+
+            filter: drop-shadow(0 0 3px rgba(#000, 0.2));
+
+            z-index: 1;
+
+            transition-duration: 0.144s;
+
+            &:hover {
+                opacity: 0.5;
+            }
+
+            &:active {
+                @include transform(scale(1.1));
+            }
+
+            &.active {
+                background-image: url("img/check-solid.svg");
+            }
+        }
+
+        &.flexbox {
+            @media (min-width: $screen-lg) {
+                .row {
+                    justify-content: space-between;
+
+                    @media print {
+                        flex-wrap: wrap;
+                    }
+                }
+            }
+            .item {
+                padding-right: 15px;
+                padding-left: 15px;
+            }
+        }
+
+        &.ticker {
+            max-width: 100%;
+
+            h2 {
+                display: block;
+                margin: 0 0 24px 0;
+
+                color: $textColor;
+                font-family: $textFont;
+                font-size: 23px;
+                font-weight: 400;
+                font-style: italic;
+                text-align: left;
+            }
+
+            // .tickerData {
+            // }
+        }
+
+        &.stockinfo {
+            .tbPrices {
+                &__title {
+                    border-radius: 5px;
+                }
+
+                &__price {
+                    .preco {
+                        font-size: 28px;
+
+                        .variation {
+                            font-size: 20px;
+                        }
+                    }
+                }
+
+                &__column {
+                    .value {
+                        font-size: 10px;
+                    }
+
+                    .label {
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+
+        table {
+            &.tickerData {
+                margin: 0;
+                text-align: left;
+
+                thead {
+                    vertical-align: middle;
+
+                    th {
+                        padding: 0 0 30px 0;
+                        width: 64%;
+
+                        vertical-align: middle;
+
+                        background: none;
+
+                        &.price {
+                            color: $textColor;
+                            font-family: $textFont;
+                            font-size: 17px;
+                            font-weight: 600;
+                        }
+
+                        &.variation {
+                            span {
+                                display: inline-block;
+                                padding: 8px 10px 5px;
+
+                                color: $textColor;
+                                font-family: $fontBase;
+                                font-size: 20px;
+                                font-weight: 500;
+                            }
+                        }
+                    }
+                }
+
+                tbody {
+                    tr {
+                        td {
+                            padding: 0;
+                            height: auto;
+
+                            color: $textColor;
+                            font-family: $fontBase;
+                            font-size: 20px;
+                            font-weight: 500;
+
+                            border: none;
+
+                            &:first-child {
+                                width: 50%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,367 @@
+//vars
+$eventColor1: #E79797;
+$eventColor2: #06CA78;
+$eventColor3: #FF891C;
+$eventColor4: #1C95FF;
+$eventColor5: #AE85CE;
+
+.wpContent--events {
+
+    .datepicker {
+        position: relative;
+        z-index: 0;
+        display: table;
+        width: 100%;
+        margin: 0 auto 32px auto;
+    
+        .nav-event {
+            position: absolute;
+            top: 18px;
+    
+            width: 32px;
+            height: 32px;
+    
+            background-position: center;
+            background-repeat: no-repeat;
+            
+            cursor: pointer;
+            z-index: 2;
+    
+            &.next {
+                right: 13px;
+                background-image: url("img/events/calendarNext.svg");
+            }
+    
+            &.prev {
+                left: 13px;
+                background-image: url("img/events/calendarPrev.svg");
+            }
+    
+            &:hover {
+                opacity: .8;
+            }
+        }
+    
+        .ui-datepicker {
+            $self: &;
+            &.ui-datepicker-multi-3 {
+                .ui-datepicker-group {
+                    display: table-cell;
+                    width: 33.3%;
+                    padding: 0 12px 0;
+                    vertical-align: top;
+    
+                    @media (max-width: $screen-lg) {
+                        width: 50%;
+    
+                        &-last {
+                            display: none;
+                        }
+                    }
+    
+                    @media (max-width: $screen-md) {
+                        width: 100%;
+    
+                        &-middle {
+                            display: none;
+                        }
+                    }
+                }
+            }
+    
+            &-header {
+                width: 100%;
+                border: none;
+    
+                background-color: transparent;
+    
+                #{ $self } {
+    
+                    &-prev span,
+                    &-next span {
+                        display: none;
+                    }
+                }
+            }
+    
+            &-title {
+                padding: 10px 0;
+                margin: 0;
+    
+                color: $titleColor;
+                font-family: $fontBase;
+                font-size: 20px;
+                font-weight: 500;
+                line-height: 20px;
+                text-align: center;
+            }
+    
+            &-inline {
+                width: 100% !important;
+                display: table !important;
+                border-collapse: separate;
+                margin: 0 auto;
+                min-height: 310px;
+    
+                border: none !important;
+                background-color: transparent;
+            }
+    
+            &-calendar {
+                margin-top: 0;
+                min-height: 265px;
+    
+                border: none;
+    
+                th {
+                    background-color: transparent;
+    
+                    span {
+                        color: $primaryColor;
+                        font-family: $fontBase;
+                        font-size: 20px;
+                        font-weight: 500;
+    
+                        line-height: 20px;
+                        text-align: center;   
+                    }
+                }
+    
+                tr {
+                    td {
+                        width: 14.3%;
+                        height: 25px;
+    
+                        padding: 5px;
+                        margin: 0 auto;
+    
+                        text-align: center;
+    
+                        opacity: 1 !important;
+                        pointer-events: all;
+    
+                        border: none !important;
+                        background: transparent;
+    
+                        span {
+                            display: block;
+                            width: 38px;
+                            height: 25px;
+    
+                            margin: 0 auto;
+    
+                            color: $textColor;
+                            font-family: $textFont;
+                            font-size: 18px;
+                            font-weight: 400;
+                            line-height: 22px;
+    
+                            text-align: center;
+                            pointer-events: all;
+    
+                            border: none;
+                            background: transparent;
+                        }
+    
+                        &.has-event {
+                            span {
+                                color: white;
+                                background-color: $eventColor5;
+                            }
+    
+                            &.divulgacao-de-resultado {
+                                span {
+                                    background-color: $eventColor1;
+                                }
+                            }
+    
+                            &.webcast {
+                                span {
+                                    background-color: $eventColor2;
+                                }
+                            }
+    
+                            &.mais-de-um-evento {
+                                span {
+                                    background-color: $eventColor3;
+                                }
+                            }
+    
+                            &.conferencias {
+                                span {
+                                    background-color: $eventColor4;
+                                }
+                            }
+    
+                            &.outros-eventos {
+                                span {
+                                    background-color: $eventColor5;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+    
+            &-prev,
+            &-next {
+                display: none;
+            }
+        }
+    }
+    
+    #legenda_eventos {
+        width: 100%;
+        margin: 5px auto 81px auto;
+        
+        .legenda_texto {
+            display: block;
+            margin: 0 0 18px 0;
+    
+            color: $textColor;
+            font-family: $textFont;
+            font-size: 18px;
+            font-weight: 400;
+    
+            line-height: 21px;
+        }
+    
+        .legenda_item {
+            display: inline-block;
+            margin: 5px 15px 5px 0;
+            position: relative;
+    
+            .cor {
+                position: absolute;
+                left: 0;
+                top: 6px;
+                width: 15px;
+                height: 15px;
+    
+                &-01 {
+                    background: $eventColor1;
+                }
+    
+                &-02 {
+                    background: $eventColor2;
+                }
+    
+                &-03 {
+                    background: $eventColor3;
+                }
+    
+                &-04 {
+                    background: $eventColor4;
+                }
+    
+                &-05 {
+                    background: $eventColor5;
+                }
+            }
+    
+            .label {
+                color: $textColor;
+                padding: 5px 0 5px 25px;
+            }
+        }
+    }
+    
+    .ui-tooltip {
+        position: absolute;
+        z-index: 9999;
+        background: white;
+        border: 1px solid #e6e6e6;
+        max-width: 300px;
+        color: #2A2222;
+        box-shadow: 0 0 7px #a8a8a8;
+        padding: 0;
+    
+        h5 {
+            color: #476da6;
+            text-align: center;
+            font-weight: bold;
+            text-transform: uppercase;
+            padding: 10px;
+            font-size: 13px;
+            background: #f9f9f9;
+            margin: 0;
+        }
+    
+        ul {
+            padding: 0;
+            margin-bottom: 0;
+    
+            li {
+                list-style: none;
+                padding: 8px 10px;
+                border-top: 1px solid #e6e6e6;
+                font-size: 13px;
+            }
+        }
+    
+        .arrow {
+            width: 70px;
+            height: 16px;
+            overflow: hidden;
+            position: absolute;
+            left: 50%;
+            margin-left: -35px;
+            bottom: -16px;
+    
+            &.top {
+                top: -16px;
+                bottom: auto;
+    
+                &:after {
+                    bottom: -20px;
+                    top: auto;
+                }
+            }
+    
+            &.left {
+                left: 20%;
+            }
+    
+            &:after {
+                content: "";
+                background: white;
+                border: 1px solid #e6e6e6;
+                position: absolute;
+                left: 20px;
+                top: -20px;
+                width: 25px;
+                height: 25px;
+                box-shadow: 6px 5px 9px -9px black;
+                -webkit-transform: rotate(45deg);
+                -ms-transform: rotate(45deg);
+                transform: rotate(45deg);
+            }
+        }
+    }
+
+    .filters {
+        display: flex;
+        justify-content: flex-end;
+    }
+}
+
+.ui-helper-hidden-accessible {
+    display: none;
+}
+
+body > .ui-tooltip.ui-widget {
+    padding: 12px;
+
+    box-shadow: 0 0 6px rgba(#000, .15);
+    border: none;
+    
+    &-content {
+        h5 {
+            color: $secondaryColor;
+            font-family: $fontBase;
+            font-size: 20px;
+            font-weight: 400;
+            text-align: center;
+        }
+    }
+}
