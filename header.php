@@ -3,6 +3,7 @@
 <!-- script_path: <?php echo basename(__FILE__, ''); ?> -->
 <head>
     <?php wp_head(); ?>
+    
     <title><?php bloginfo('name')?> <?php wp_title() ?></title>
     <meta name="description" content="<?php bloginfo('description'); ?>">
 
