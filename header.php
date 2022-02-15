@@ -11,6 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta http-equiv="Content-Language" content="<?php echo ICL_LANGUAGE_CODE ?>">
     
+    <link rel="stylesheet" type="text/css" href=" <?php echo get_stylesheet_uri(); ?> /style.css" />
     <link rel="shortcut icon" href="<?php bloginfo('template_directory') ?>/img/favicon.png" />
     
     <?php wp_head(); ?>
